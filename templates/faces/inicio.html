@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+          class="striped">
+
+
+
+    <!--    https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80-->
+    <!--https://images.unsplash.com/photo-1506617564039-2f3b650b7010?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80-->
+    <!--    https://images.unsplash.com/photo-1610397962076-02407a169a5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80-->
+    <!--    https://images.unsplash.com/photo-1610397962076-02407a169a5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80-->
+    <!--https://images.unsplash.com/photo-1605447813584-26aeb3f8e6ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80-->
+
+    <style>
+    .fondo{
+    background: url(https://images.unsplash.com/photo-1610397962076-02407a169a5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);
+    width: 100vw;
+    height: 500%;
+
+    background-position:center;
+    background-size: cover;
+    }
+
+        .caja {
+  margin:auto;
+  background-color: #fafafa;
+  width: 1400px;
+  height: 800px;   }
+
+        .prueba {
+  position: absolute; top: 45px; left: 750px; }
+<!--top, right, bottom y left-->
+
+    </style>
+
+
+    <title>Supermercado</title>
+</head>
+<body class="fondo">
+
+<nav>
+    <div class="nav-wrapper teal darken-2">
+        <a href="#" class="brand-logo"><i class="material-icons">storefront</i>Supermercado Chispaso</a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a href={% url 'supermercado:admintipopro'%}><i class="material-icons left">admin_panel_settings</i>Administrador</a>
+            </li>
+            <li><a href={% url 'supermercado:crearUsuario'%}><i class="material-icons left">groups</i>Clientes</a></li>
+            <li><a href={% url 'supermercado:registroFactura'%}><i class="material-icons left">history_edu</i>Registro
+                de ventas</a></li>
+
+            {% if user.is_authenticated %}
+            <li><a href="#"><i class="material-icons left">account_circle</i>{{user.username}}</a></li>
+
+            <li><a href={% url 'logout' %}><i class="material-icons left">logout</i>Cerrar sesión</a></li>
+
+            {% else %}
+            <li><a href={% url 'login' %}><i class="material-icons left">login</i>Iniciar sesion</a></li>
+
+            {% endif %}
+
+
+        </ul>
+    </div>
+</nav>
+
+
+<div class="caja">
+    <div class="container">
+        <br>
+        <h1 class="center">Productos</h1>
+
+        <table>
+
+            <tr>
+                <th>Id</th>
+                <th>Producto</th>
+                <th>Precio de compra</th>
+                <th>Distribuidor</th>
+                <th style="text-align: right;">----Seleccionar----</th>
+            </tr>
+
+            {% for preciprod in Precioproductos %}
+            <tr>
+                <td>{{preciprod.id}}</td>
+
+                {% for a in product %}
+                {% if a.id == preciprod.id %}
+                <td>{{a.product_name}}</td>
+                {% endif %}
+                {% endfor %}
+                <td>{{preciprod.shop_price}}</td>
+
+                {% for pp in productProvider %}
+                {% if pp.id == preciprod.id %}
+                <td>{{pp.fk_id_provider.name}}</td>
+                {% endif %}
+                {% endfor %}
+                <td style="text-align: right;"><a href={% url 'supermercado:procesoFactura' id=preciprod.id %} class="btn
+                    btn-success">Seleccionar</a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>

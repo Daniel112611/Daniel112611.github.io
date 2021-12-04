@@ -1,0 +1,49 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+         <div class="botonVolver">
+            <a href={% url 'supermercado:adminproduct'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+        <br>
+        <h1 class="center">Listar productos</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre de producto</th>
+                <th>Tipo de producto</th>
+                <th>Borrar</th>
+                <th>Modificar</th>
+            </tr>
+            </thead>
+            <!--        #Ver el thead ********************************************************-->
+            {% for prod in borrarProds %}
+            <tbody>
+            <tr>
+                <td>{{prod.product_name}}</td>
+                <td>{{prod.fk_id_product_type}}</td>
+                <td><a href={% url 'supermercado:eliminarpro' id=prod.id %} class="waves-effect waves-light btn-small"><i class="material-icons">delete_forever</i></a>
+                </td>
+                <td><a href={% url 'supermercado:modificarprods' id=prod.id %} class="waves-effect waves-light btn-small"><i
+                        class="material-icons">edit</i></a></td>
+
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        {% if messages %}
+        {% for a in messages %}
+        <p>{{a}}</p>
+        {% endfor %}
+        {% else%}
+        {% endif%}
+
+    </div>
+</div>
+
+{% endblock %}
+<!--href={% url 'supermercado:eliminartipopro' id=prodtype.id %}-->

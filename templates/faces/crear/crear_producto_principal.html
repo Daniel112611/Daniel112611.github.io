@@ -1,0 +1,70 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+        <br>
+        <h1 class="center">Crear producto</h1>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <label>Nombre de producto</label>
+            <input type="text" name="nameProduct">
+            <br>
+
+            <label>Proveedor de producto</label>
+            <select name="idProvider">
+                <option value="">Seleccionar</option>
+
+                {% for a in provider %}
+
+                <option value="{{a.id}}">{{a.name}}</option>
+
+                {% endfor %}
+
+            </select>
+            <br>
+
+            <label>Precio de venta</label>
+            <input type="number" step="any" name="priceSale">
+            <br>
+
+            <label>Precio de la tienda</label>
+            <input type="number" step="any" name="priceShop">
+            <br>
+
+            <label>Fecha de inicio</label>
+            <input type="date" name="startDate">
+            <br>
+
+            <label>Impuestos</label>
+            <select name="infoTax">
+                <option value="">Seleccionar</option>
+
+                {% for a in tax %}
+
+                <option value="{{a.id}}">{{a.tax_name}} {{a.tax_value}}%</option>
+
+                {% endfor %}
+
+
+
+            </select>
+            <br>
+
+
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+
+        <p class="center">{{mensaje}}</p>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

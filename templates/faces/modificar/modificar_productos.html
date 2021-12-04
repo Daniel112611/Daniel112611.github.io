@@ -1,0 +1,61 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+        <div class="botonVolver">
+            <a href={% url 'supermercado:listarprods'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+
+        <br>
+        <br>
+        <h1 class="center">Modificar producto</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <input type="hidden" name="infoId" value="{{producto.id}}">
+
+            <label>Nombre de producto</label>
+            <input type="text" name="infoNamePro" value="{{ producto.product_name }}">
+            <br>
+
+            <label>Tipo de producto</label>
+            <select name="infoTipoProducto">
+                <!--                <option value="{{producto.id}}">{{producto.fk_id_product_type.product_type_name}}</option>-->
+                {% if producto.fk_id_product_type.product_type_name == null %}
+                <option value="">Seleccionar</option>
+                {% else %}
+                {% for p in tipoProds %}
+                {% if p.id == producto.fk_id_product_type.id %}
+                <option value="{{p.id}}">{{p.product_type_name}}</option>
+                {% endif %}
+                {% endfor %}
+
+                {% endif %}
+
+
+
+
+                {% for p in tipoProds %}
+                <option value="{{p.id}}">{{p.product_type_name}}</option>
+                {% endfor %}
+
+
+            </select>
+            <br>
+
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+
+        <div class="container">
+            <p>{{mensaje}}</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+<!--href="{% url 'eliminar'  preciprod.id %}"-->

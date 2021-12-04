@@ -1,0 +1,32 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+        <div class="botonVolver">
+            <a href={% url 'supermercado:listartp'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+        <br>
+        <br>
+        <h1 class="center">Modificar tipo de producto</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="infoId" value="{{EditarProType.id}}">
+
+            <label>Tipo de producto</label>
+            <input type="text" name="EditarProType" value="{{EditarProType.product_type_name}}">
+            <br>
+            <br>
+
+            <input class="btn black black right" type="submit" value="Guardar">
+        </form>
+        <div class="container">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!--href="{% url 'eliminar'  preciprod.id %}"-->

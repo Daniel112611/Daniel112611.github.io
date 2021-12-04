@@ -1,0 +1,57 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+
+<div class="caja">
+    <div class="container">
+
+
+        <br>
+        <h1 class="center">Proveedores</h1>
+        <table>
+            <thead>
+            <tr>
+                <th style="width: 10%;">Id</th>
+                <th style="width: 30%;">Nombre de proveedor</th>
+                <th style="width: 20%;">Nit</th>
+                <!--                <th>url</th>-->
+                <th style="width: 20%;">Direccion</th>
+                <th style="width: 20%;">Numero de contacto</th>
+            </tr>
+            </thead>
+            <!--        #Ver el thead ********************************************************-->
+
+            {% for a in proveedor %}
+            <tbody>
+            <tr>
+                <td style="width: 10%;">{{a.id}}</td>
+                <td style="width: 30%;">{{a.name}}</td>
+                <td style="width: 20%;">{{a.nit}}</td>
+                <!--                <td>{{a.url}}</td>-->
+                <td style="width: 20%;">{{a.address}}</td>
+                <td style="width: 20%;">{{a.phone_number}}</td>
+
+            </tr>
+            </tbody>
+            {% endfor %}
+
+        </table>
+    </div>
+
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+        <li><a href={% url 'supermercado:crearproveedor'%} class="btn-floating red"><i
+                class="material-icons">add</i></a></li>
+        <li><a href={% url 'supermercado:listarprovds' %} class="btn-floating yellow darken-1"><i
+                class="material-icons">drive_file_rename_outline</i></a></li>
+    </ul>
+</div>
+
+
+{% endblock %}

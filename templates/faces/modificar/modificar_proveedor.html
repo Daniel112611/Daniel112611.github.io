@@ -1,0 +1,50 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+
+         <div class="botonVolver">
+            <a href={% url 'supermercado:listarprovds'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+        <br>
+
+        <h1 class="center">Modificar proveedor</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="infoId" value="{{provider.id}}">
+
+            <label>Nombre de proveedor</label>
+            <input type="text" name="infoName" value="{{provider.name}}">
+            <br>
+
+            <label>Nit</label>
+            <input type="text" name="infoNit" value="{{provider.nit}}">
+            <br>
+
+            <!--            <label>Url</label>-->
+            <!--            <input type="text" name="infoName" value="{{provider.url}}">-->
+            <!--            <br>-->
+
+            <label>Direccion</label>
+            <input type="text" name="infoAddress" value="{{provider.address}}">
+            <br>
+
+            <label>Numero de contacto</label>
+            <input type="number" name="infoNumber" value="{{provider.phone_number}}">
+            <br>
+            <br>
+            <br>
+
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+        <div class="container">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!--href="{% url 'eliminar'  preciprod.id %}"-->

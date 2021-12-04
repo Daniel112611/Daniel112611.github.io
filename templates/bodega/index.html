@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href={% url 'bodegas:almacenar_bodega'%}>almacenar</a>
+<ul>
+
+
+    <li>item uno <a href={% url 'bodegas:detalle_bodega' id=1 %}>uno</a></li>
+    <li>item dos  <a href={% url 'bodegas:detalle_bodega' id=2 %}>dos</a></li>
+    <li>item tres  <a href="">tres</a></li>
+    <li>item cuatro  <a href="">uno</a></li>
+    <li>item cinco  <a href="">uno</a></li>
+</ul>
+
+</body>
+</html>

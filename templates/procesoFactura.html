@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+          class="striped">
+
+    <!--    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,56,130,1) 11%, rgba(0,56,130,1) 89%, rgba(2,0,36,1) 100%);-->
+    <!--        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(1,69,176,1) 36%, rgba(0,212,255,1) 100%);-->
+    <style>
+    .fondocolor{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,44,82,1) 11%, rgba(15,44,82,1) 89%, rgba(2,0,36,1) 100%);
+
+    width: 100vw;
+    }
+
+
+        .caja {
+  margin:auto;
+  background-color: #fafafa;
+  width: 1000px;
+  height: 1000px;   }
+
+
+
+        .botonVolver {
+  position: absolute; top: 80px; left: 480px; }
+<!--top, right, bottom y left-->
+
+
+
+
+    </style>
+
+    <title>Supermercado</title>
+</head>
+<body class="fondocolor">
+
+
+<div class="botonVolver">
+    <a href={% url 'supermercado:inicio'%} class="waves-effect waves-light btn black"><i class="material-icons left">reply</i>Volver</a>
+</div>
+
+
+<div class="caja">
+    <div class="container">
+        <br>
+        <div class="center-align">
+
+            <h1>Proceso factura</h1>
+        </div>
+        <form action="" method=POST>
+
+            {% csrf_token %}
+            <div class="row">
+                <div class="col s6">
+                    <label>Metodo de pago</label>
+                    <input type="number" step="any" name="infoTipoPago">
+                    <br>
+                </div>
+
+                <div class="col s6">
+                    <label>Fecha</label>
+                    <input type="date" name="infoFechaTicket">
+                    <br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <label>Nombre de cajero</label>
+                    <select name="infoCajero" id="">
+                        <option value="">Seleccionar</option>
+
+                        {% for a in persontype %}
+                        {% if a.person_type_name == "Cajero" %}
+
+                        {% for b in person %}
+                        {% if a.id == b.id %}
+
+                        <option value="{{b.id}}">{{b.person_name}} {{b.person_last_name}}</option>
+
+                        {% endif %}
+                        {% endfor %}
+
+                        {% endif %}
+                        {% endfor %}
+
+                    </select>
+
+
+                    <!--                        <input type="text" value="{{user.username}}" name="">-->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <label>Nombre de cliente</label>
+                    <select name="infoCliente">
+                        <option value="">Seleccionar</option>
+
+                        {% for a in persontype %}
+                        {% if a.person_type_name == "Cliente" %}
+
+                        {% for b in person %}
+                        {% if a.id == b.id %}
+
+                        <option value="{{b.id}}">{{b.person_name}}</option>
+
+                        {% endif %}
+                        {% endfor %}
+
+                        {% endif %}
+                        {% endfor %}
+
+                    </select>
+                </div>
+            </div>
+
+
+            <!--Editar-->
+            <div class="row">
+                <div class="col s12">
+                    <label>Producto</label>
+                    <input type="text" value="{{idProduct.product_name}}">
+                </div>
+            </div>
+            <p>
+                --------------------------------------------------------------------------------------------------------------------</p>
+            <h4 class="center">Detalles</h4>
+
+            <label>Cantidad</label>
+            <input type="number" name="infoAmount">
+            <br>
+
+            <label>IVA</label>
+            <select name="infoIdTaxPricePro">
+
+                <option value="{{idtaxPriceProduct.id}}">{{idtaxPriceProduct.fk_id_tax}}</option>
+
+                {% for a in taxPriceProduct %}
+
+                <option value="{{a.id}}">{{a.fk_id_tax}}</option>
+
+                {% endfor %}
+
+            </select>
+            <br>
+
+            <!--            <input type="text" value="{{idtaxPriceProduct.fk_id_tax}}" name="infoIdTaxPricePro">-->
+            <!--            {% for a in taxPriceProduct %}-->
+            <!--            {% if productoPric.id == a.id %}-->
+            <!--            <p>**************</p>-->
+            <!--            <input type="text" value="{{a.fk_id_tax}}" name="infoIdTaxPricePro">-->
+            <!--            {% else %}-->
+            <!--            <p>No se encuentra el id</p>-->
+            <!--            {% endif %}-->
+            <!--            {% endfor %}-->
+
+
+            <div class="right">
+
+                <a href={% url 'supermercado:registroFactura' %}><input class="btn blue" type="submit" value="Facturar"></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+var options={}
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems, options);
+  });
+
+
+
+
+
+</script>
+
+
+<script>M.AutoInit();</script>
+</body>
+</html>

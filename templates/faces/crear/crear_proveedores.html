@@ -1,0 +1,51 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+
+         <div class="botonVolver">
+            <a href={% url 'supermercado:provider'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+
+        <br>
+        <h1 class="center">Crear proveedor</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+
+
+            <label>Nombre de proveedor</label>
+            <input type="text" name="infoName">
+            <br>
+
+            <label>Nit</label>
+            <input type="text" name="infoNit">
+            <br>
+
+            <!--            <label>Url</label>-->
+            <!--            <input type="text" name="infoName">-->
+            <!--            <br>-->
+
+            <label>Direccion</label>
+            <input type="text" name="infoAddress">
+            <br>
+
+            <label>Numero de contacto</label>
+            <input type="number" name="infoNumber">
+            <br>
+            <br>
+            <br>
+
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+        <div class="container">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

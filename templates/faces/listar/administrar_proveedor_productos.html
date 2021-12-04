@@ -1,0 +1,45 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+        <br>
+        <h1 class="center">Proveedor de productos</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Proveedor</th>
+                <th>Codigo de barras</th>
+                <th>Existencias</th>
+                <th>Producto</th>
+            </tr>
+
+            {% for a in productosProveedor %}
+            <tr>
+                <td>{{a.id}}</td>
+                <td>{{a.fk_id_provider}}</td>
+                <td>{{a.bar_code}}</td>
+                <td>{{a.stock}}</td>
+                <td>{{a.fk_id_product}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+</div>
+
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+        <li><a href={% url 'supermercado:crearproveedorproductos'%} class="btn-floating red"><i class="material-icons">add</i></a></li>
+        <li><a href={% url 'supermercado:listarprovdsprods'%} class="btn-floating yellow darken-1"><i class="material-icons">drive_file_rename_outline</i></a></li>
+    </ul>
+</div>
+
+{% endblock %}

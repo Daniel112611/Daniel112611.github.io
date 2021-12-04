@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+          class="striped">
+
+    <style>
+    .fondocolor{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,44,82,1) 11%, rgba(15,44,82,1) 89%, rgba(2,0,36,1) 100%);
+
+    width: 100vw; }
+
+        .caja {
+  margin:auto;
+  background-color: #fafafa;
+  width: 1000px;
+  height: 800px;   }
+
+        .botonVolver {
+  position: absolute; top: 80px; left: 480px; }
+    </style>
+
+    <title>Supermercado</title>
+</head>
+<body class="fondocolor">
+
+<div class="botonVolver">
+    <a href={% url 'supermercado:inicio'%} class="waves-effect waves-light btn black"><i class="material-icons left">reply</i>Volver</a>
+</div>
+
+<br>
+<br>
+
+
+<div class="caja">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <div class="center-align">
+            <h1>Iniciar sesion</h1>
+        </div>
+        <form action="" method=POST>
+
+            {% csrf_token %}
+
+            {{form}}
+            <br>
+            <br>
+
+                <input class="btn black right" type="submit" value="Login">
+
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+        <div class="botonVolver">
+            <a href={% url 'supermercado:listarprecioprod'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+
+        <br>
+        <h1 class="center">Modificar precio de producto</h1>
+        <!--&lt;!&ndash;        <label for="">asdasd</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;        <input type="text" name="">&ndash;&gt;-->
+
+        <form action="" method="POST">
+
+            <!--enctype="multipart/form-data"-->
+            <input type="hidden" name="infoId" value="{{ EditarPrePro.id }}">
+
+            {% csrf_token %}
+            <label>Precio de venta</label>
+            <input step="any" type="number" name="infoSale_price" value="{{ EditarPrePro.sale_price }}">
+            <br>
+
+            <label>Precio de la tienda</label>
+            <input step="any" type="number" name="infoShop_price" value="{{ EditarPrePro.shop_price }}">
+            <br>
+
+
+            <label>Fecha de inicio</label>
+            <p><input type="date" name="infoStart_date" value="{{ EditarPrePro.start_date }}">Fecha inicial: {{EditarPrePro.start_date}}</p>
+            <br>
+
+
+            <label>Usuario que actualizo</label>
+            <input type="text" name="infoUser_update" value="{{ EditarPrePro.user_update }}">
+            <br>
+
+            <label>fecha de actualizacion</label>
+            <input type="date" name="infoDate_update" value="{{ EditarPrePro.date_update }}">
+            <br>
+            <br>
+
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+        <div class="container">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

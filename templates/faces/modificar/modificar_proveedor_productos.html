@@ -1,0 +1,69 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+        <div class="botonVolver">
+            <a href={% url 'supermercado:listarprovdsprods'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+
+        <br>
+        <h1 class="center">Modificar proveedor de productos</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <input type="hidden" name="infoId" value="{{producto_provider.id}}">
+
+            <label>Proveedor</label>
+            <select name="infoProveedor">
+
+
+                {% for a in provider %}
+                {% if a.id == producto_provider.fk_id_provider.id %}
+                <option value="{{a.id}}">{{a.name}}</option>
+                {% endif %}
+                {% endfor %}
+
+                {% for a in provider %}
+                <option value="{{a.id}}">{{a.name}}</option>
+                {% endfor %}
+
+            </select>
+            <br>
+
+            <label>Codigo de barras</label>
+            <input type="text" name="infoCodigoBarra" value="{{producto_provider.bar_code}}">
+            <br>
+
+            <label>Existencias</label>
+            <input type="number" name="infoExistencias" value="{{producto_provider.stock}}">
+            <br>
+
+            <label>Producto</label>
+            <select name="infoProducto">
+
+                {% for a in product %}
+                {% if a.id == producto_provider.fk_id_product.id %}
+                <option value="{{a.id}}">{{a.product_name}}</option>
+                {% endif %}
+                {% endfor %}
+
+                {% for a in product %}
+                <option value="{{a.id}}">{{a.product_name}}</option>
+                {% endfor %}
+
+            </select>
+            <br>
+
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+        <div class="container">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!--href="{% url 'eliminar'  preciprod.id %}"-->

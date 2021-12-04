@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+          class="striped">
+
+    <!--        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(1,69,176,1) 36%, rgba(0,212,255,1) 100%);-->
+    <!--    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,56,130,1) 11%, rgba(0,56,130,1) 89%, rgba(2,0,36,1) 100%);-->
+    <style>
+    .fondocolor{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,44,82,1) 11%, rgba(15,44,82,1) 89%, rgba(2,0,36,1) 100%);
+
+    width: 100vw;
+    }
+
+<!--.fondo {background: url(https://images.unsplash.com/photo-1515706886582-54c73c5eaf41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);}-->
+.fondo{
+  background: url(https://images.unsplash.com/photo-1515706886582-54c73c5eaf41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) no-repeat center center fixed;
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,44,82,1) 11%, rgba(15,44,82,1) 89%, rgba(2,0,36,1) 100%);
+}
+
+        .caja {
+  margin:auto;
+  background-color: #fafafa;
+  width: 1000px;
+  height: 800px;   }
+
+        .botonVolver {
+  position: absolute; top: 80px; left: 390px; }
+<!--top, right, bottom y left-->
+
+
+
+
+
+
+
+    </style>
+
+    <title>Supermercado</title>
+</head>
+<body class="fondocolor">
+
+<div class="botonVolver">
+    <a href={% url 'supermercado:inicio'%} class="waves-effect waves-light btn black"><i class="material-icons left">reply</i>Volver</a>
+</div>
+
+
+<div class="caja">
+    <div class="container">
+        <br>
+        <div class="center">
+            <h1>Registrar usuario</h1>
+        </div>
+        <form action="" method=POST>
+            {% csrf_token %}
+            <!--        <a href="#"></a>-->
+            {{form.as_p}}
+            <br>
+            <br>
+
+                <input class="waves-effect waves-light btn blue-grey lighten-2 right" type="submit" value="Registrar">
+
+
+
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>

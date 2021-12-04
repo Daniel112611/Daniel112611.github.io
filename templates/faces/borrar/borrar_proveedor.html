@@ -1,0 +1,55 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+    <div class="container">
+
+         <div class="botonVolver">
+            <a href={% url 'supermercado:provider'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+         </div>
+
+        <br>
+        <h1 class="center">Listar proveedores</h1>
+        <table>
+
+            <tr>
+                <th>Nombre de proveedor</th>
+                <th>Nit</th>
+                <!--                <th>url</th>-->
+                <th>Direccion</th>
+                <th>Numero de contacto</th>
+                <th>Borrar</th>
+                <th>Modificar</th>
+            </tr>
+
+            <!--        #Ver el thead ********************************************************-->
+            {% for a in borrarProveeds %}
+            <tbody>
+            <tr>
+                <td>{{a.name}}</td>
+                <td>{{a.nit}}</td>
+                <td>{{a.address}}</td>
+                <td>{{a.phone_number}}</td>
+                <td><a href={% url 'supermercado:eliminarprovds' id=a.id %} class="waves-effect waves-light btn-small"><i class="material-icons">delete_forever</i></a>
+                </td>
+                <td><a href={% url 'supermercado:modificarprovider' id=a.id %} class="waves-effect waves-light btn-small"><i
+                        class="material-icons">edit</i></a></td>
+
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+        {% if messages %}
+        {% for a in messages %}
+        <p>{{a}}</p>
+        {% endfor %}
+        {% else%}
+        {% endif%}
+
+    </div>
+</div>
+
+{% endblock %}

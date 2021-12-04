@@ -1,0 +1,45 @@
+{% extends "principal_administrar_productos.html" %}
+
+{% block content %}
+
+<div class="caja">
+
+    <div class="container">
+        <div class="botonVolver">
+            <a href={% url 'supermercado:adminproduct'%} class="waves-effect waves-light btn black"><i
+                class="material-icons left">reply</i>Volver</a>
+        </div>
+
+        <br>
+        <h1 class="center">Crear producto</h1>
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+            <label>Nombre de producto</label>
+            <input type="text" name="infoNamePro">
+            <br>
+
+            <label>Tipo de producto</label>
+            <select name="infoTipoProducto">
+                <option value="">Seleccionar</option>
+
+                {% for p in tipoProducto %}
+                <option value="{{ p.id }}">{{ p.product_type_name }}</option>
+                {% endfor %}
+
+            </select>
+            <br>
+            <br>
+            <input class="btn black right" type="submit" value="Guardar">
+        </form>
+
+        <div class="container">
+            <strong><p>{{mensaje}}</p></strong>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
