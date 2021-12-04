@@ -11,11 +11,11 @@ from django.shortcuts import redirect
 from productos.admin import prod_type_Admin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('supermercado/', include('productos.urls', namespace="productos")),
-    path('accounts/',include('django.contrib.auth.urls')),
-    path('pdf/<int:id>', PDF.as_view() ,name="pdf" ),
-
+    # path('admin/', admin.site.urls),
+    # path('supermercado/', include('productos.urls', namespace="productos")),
+    # path('accounts/',include('django.contrib.auth.urls')),
+    # path('pdf/<int:id>', PDF.as_view() ,name="pdf" ),
+    #
 
 
 ]

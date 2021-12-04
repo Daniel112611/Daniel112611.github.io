@@ -37,7 +37,7 @@ def paginainicio(request):
 
     }
 
-    return render(request, "faces/inicio.html", variable)
+    return render(request, "faces/index.html", variable)
 
 
 @login_required()
